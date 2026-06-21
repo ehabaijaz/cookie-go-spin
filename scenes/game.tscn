@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://du3m116uw2vy5"]
+
+[ext_resource type="Script" uid="uid://b6uhh6ddyeqhx" path="res://scenes/cookie_area.gd" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://dqgnlesjth815" path="res://scenes/game.gd" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cvoisg3tthfoi" path="res://scenes/mouse.tscn" id="2_yqjtg"]
+[ext_resource type="FontFile" uid="uid://brernibnmmom4" path="res://cookie-dough.ttf" id="4_dinhu"]
+[ext_resource type="Script" uid="uid://cmpb7hbq068k0" path="res://scenes/cookie_label.gd" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://be0w3okn65isk" path="res://Buttons/ButtonClose.png" id="5_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dufm7m1cskay6" path="res://Buttons/ButtonClose2.png" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://caljrlme2bb7s" path="res://Buttons/ButtonClose2Active.png" id="6_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dkykjf3ugw8os" path="res://cursorcookie.png" id="6_vtaks"]
+[ext_resource type="Texture2D" uid="uid://byv7a06wun4d6" path="res://Buttons/IconButtons/IconButtonGreen.png" id="7_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://dyc7hkvp6dbaa" path="res://cookie.png" id="8_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://biypl2mginkvj" path="res://error.mp3" id="12_dinhu"]
+[ext_resource type="AudioStream" uid="uid://dwdptgechoa16" path="res://powerup.mp3" id="12_kvuet"]
+[ext_resource type="AudioStream" uid="uid://bmdt755v653vh" path="res://scenes/arcade.mp3" id="14_trtic"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 350, 1)
+spread = 0.0
+initial_velocity_min = -100.0
+gravity = Vector3(-100, -9.8, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 81.09871
+
+[node name="Game" type="Node2D" unique_id=1225748095]
+script = ExtResource("1_u5sy4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=750262436]
+position = Vector2(1196, 335)
+amount = 110
+texture = ExtResource("8_kvpfn")
+lifetime = 6.0
+preprocess = 6.0
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=825355855]
+z_index = -1
+offset_right = 1185.0
+offset_bottom = 678.0
+mouse_filter = 2
+color = Color(0.93333334, 0.8784314, 0.69411767, 1)
+
+[node name="CookieArea" type="Area2D" parent="." unique_id=1643008701]
+position = Vector2(572, 293)
+script = ExtResource("1_lnu2h")
+metadata/_edit_group_ = true
+
+[node name="Cookie" type="Sprite2D" parent="CookieArea" unique_id=180841542]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_kvpfn")
+
+[node name="CookieCollision" type="CollisionShape2D" parent="CookieArea" unique_id=2008656062]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1177948992]
+layer = 0
+
+[node name="CookieLabel" type="Label" parent="CanvasLayer" unique_id=12262016]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 75.0
+grow_horizontal = 2
+pivot_offset = Vector2(96, 25.5)
+theme_override_colors/font_color = Color(0.40784314, 0.21568628, 0.08235294, 1)
+theme_override_fonts/font = ExtResource("4_dinhu")
+theme_override_font_sizes/font_size = 37
+text = "Cookies: "
+script = ExtResource("4_lbhrr")
+
+[node name="ClickerUpgrade" type="TextureButton" parent="CanvasLayer" unique_id=1776163840]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_top = 7.0
+offset_right = -151.0
+offset_bottom = 130.0
+grow_horizontal = 0
+texture_normal = ExtResource("5_0tnpc")
+
+[node name="Cursorcookie" type="Sprite2D" parent="CanvasLayer/ClickerUpgrade" unique_id=1851406980]
+position = Vector2(68.99988, 49.000004)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_vtaks")
+
+[node name="CookiePrice2" type="Label" parent="CanvasLayer/ClickerUpgrade" unique_id=2078233329]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.5
+offset_top = 84.00001
+offset_right = 58.5
+offset_bottom = 135.0
+grow_horizontal = 2
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(96, 25.5)
+theme_override_colors/font_color = Color(0.40784314, 0.21568628, 0.08235294, 1)
+theme_override_fonts/font = ExtResource("4_dinhu")
+theme_override_font_sizes/font_size = 37
+text = "100c"
+horizontal_alignment = 1
+
+[node name="CookieUpgrade" type="TextureButton" parent="CanvasLayer" unique_id=51067598]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 188.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("7_kvpfn")
+
+[node name="Cookie" type="Sprite2D" parent="CanvasLayer/CookieUpgrade" unique_id=1037118055]
+position = Vector2(110, 83.33333)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_kvpfn")
+
+[node name="CookiePrice" type="Label" parent="CanvasLayer/CookieUpgrade" unique_id=2081459111]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.99994
+offset_top = 158.33333
+offset_right = 110.00006
+offset_bottom = 209.33333
+grow_horizontal = 2
+pivot_offset = Vector2(96, 25.5)
+theme_override_colors/font_color = Color(0.40784314, 0.21568628, 0.08235294, 1)
+theme_override_fonts/font = ExtResource("4_dinhu")
+theme_override_font_sizes/font_size = 37
+text = "15c"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="CanvasLayer" unique_id=2005421382]
+offset_left = -5.0
+offset_top = 1.0
+offset_right = 136.0
+offset_bottom = 124.0
+texture_normal = ExtResource("5_gee14")
+texture_hover = ExtResource("6_0tnpc")
+
+[node name="Mouse" parent="CanvasLayer" unique_id=1374384970 instance=ExtResource("2_yqjtg")]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1399659199]
+unique_name_in_owner = true
+
+[node name="Marker2D" type="Marker2D" parent="Markers" unique_id=1874868752]
+position = Vector2(576, 390)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers" unique_id=178721282]
+position = Vector2(676, 294)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers" unique_id=1067592874]
+position = Vector2(460, 287)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers" unique_id=1490081852]
+position = Vector2(573, 196)
+
+[node name="Timer" type="Timer" parent="." unique_id=1524648391]
+autostart = true
+
+[node name="Clickers" type="Node2D" parent="." unique_id=276253572]
+
+[node name="Powerup" type="AudioStreamPlayer2D" parent="." unique_id=135860961]
+stream = ExtResource("12_kvuet")
+
+[node name="Error" type="AudioStreamPlayer2D" parent="." unique_id=962117236]
+stream = ExtResource("12_dinhu")
+volume_db = 10.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=508850624]
+stream = ExtResource("14_trtic")
+autoplay = true
+
+[connection signal="cookie_clicked" from="CookieArea" to="CanvasLayer/CookieLabel" method="_on_cookie_area_cookie_clicked"]
+[connection signal="input_event" from="CookieArea" to="CookieArea" method="_on_input_event"]
+[connection signal="pressed" from="CanvasLayer/ClickerUpgrade" to="CanvasLayer/CookieLabel" method="_on_clicker_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/CookieUpgrade" to="CanvasLayer/CookieLabel" method="_on_cookie_upgrade_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="timeout" from="Timer" to="CanvasLayer/CookieLabel" method="_on_timer_timeout"]

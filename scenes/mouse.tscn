@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cvoisg3tthfoi"]
+
+[ext_resource type="Texture2D" uid="uid://dcjun1uo3ebe2" path="res://pointercookie.png" id="1_ouscy"]
+[ext_resource type="Script" uid="uid://d0st02p748phh" path="res://scenes/mouse.gd" id="1_xa71f"]
+[ext_resource type="Script" uid="uid://c6bq3hcf0mrms" path="res://scenes/mouse_cookie_sprite.gd" id="3_xa71f"]
+[ext_resource type="Texture2D" uid="uid://dyc7hkvp6dbaa" path="res://cookie.png" id="4_iog6k"]
+[ext_resource type="AudioStream" uid="uid://c2eqm58s8gyv" path="res://click.mp3" id="5_dexx5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 200, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+
+[node name="Mouse" type="Node2D" unique_id=1374384970]
+script = ExtResource("1_xa71f")
+
+[node name="MouseCookie" type="Sprite2D" parent="." unique_id=311486556]
+texture = ExtResource("1_ouscy")
+offset = Vector2(50, 50)
+script = ExtResource("3_xa71f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1536706756]
+z_index = -100
+amount = 10
+texture = ExtResource("4_iog6k")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=471590850]
+stream = ExtResource("5_dexx5")
+volume_db = 2.0

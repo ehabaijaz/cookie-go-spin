@@ -7,7 +7,7 @@ var clicker_price := 100
 @onready var mark_pos = $"/root/Game/Markers".get_children()
 @onready var clickers = $"/root/Game/Clickers"
 func _ready():
-	text = "Score: 0"
+	text = "Score: " + str(score)
 
 func _on_cookie_area_cookie_clicked() -> void:
 	print('clicked')

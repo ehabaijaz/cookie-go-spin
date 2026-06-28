@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cns4sbtcb1ib8"]
+
+[ext_resource type="AudioStream" uid="uid://c8m0my46ml8e5" path="res://tvstatic.mp3" id="1_3i5yu"]
+
+[node name="NoCookies" type="Control" unique_id=1168516475]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1051051467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1652671293]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 100
+text = "no cookies for you  :("
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1840334409]
+stream = ExtResource("1_3i5yu")
+volume_db = 10.0
+autoplay = true
